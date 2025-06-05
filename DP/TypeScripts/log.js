@@ -1,4 +1,4 @@
-//console.log("JS is running");
+console.log("JS is running");
 //window.onload = () => {
 //    const loginBtn = document.querySelector("input[id$='btnLogin']") as HTMLInputElement;
 //    if (!loginBtn) {
