@@ -36,6 +36,7 @@ Public Class Login
         If isValidUser Then
             Session("user") = inputUsername
             Response.Redirect("Dashboard.aspx")
+            Response.Write("<script language=""javascript"">alert('Brravo e ke qarre je i madh');</script>")
         Else
             lblError.Text = "Invalid username or password."
         End If

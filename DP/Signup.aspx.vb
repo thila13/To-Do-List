@@ -62,7 +62,7 @@ Public Class Signup
             Return
         End Try
 
-        ShowMessage("User signed up successfully!", False)
+        ShowMessage("E krijove ene nji je bo si lepurat!", False)
 
         Session("user") = username
         Response.Redirect("Dashboard.aspx")

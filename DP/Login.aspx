@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="Content/Login.css" />
+    <script type="module" src="TypeScripts/log.js"></script>
     <title>Login</title>
 </head>
 <body>

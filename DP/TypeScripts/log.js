@@ -1,4 +1,4 @@
-console.log("JS is running");
+console.log("Ca bane a la bugace mbreti e la");
 //window.onload = () => {
 //    const loginBtn = document.querySelector("input[id$='btnLogin']") as HTMLInputElement;
 //    if (!loginBtn) {
