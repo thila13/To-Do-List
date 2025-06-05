@@ -1,0 +1,144 @@
+﻿/* Signup.css */
+
+/* Playful rounded navbar */
+nav {
+    background-color: #0078d7;
+    padding: 12px 24px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 120, 215, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    max-width: 90%;
+    color: white;
+    font-size: 18px;
+}
+
+/* Optional: Add link styles inside nav */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #cce4ff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signupbox {
+    background-color: white;
+    padding: 30px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 320px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#signupbox label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+#signupbox input[type="text"],
+#signupbox input[type="password"],
+#signupbox input[type="email"],
+#signupbox input[type="number"],
+#signupbox input[type="tel"],
+#signupbox input[type="url"],
+#signupbox input[type="search"],
+#signupbox input[type="date"],
+#signupbox input[type="datetime-local"],
+#signupbox input[type="month"],
+#signupbox input[type="time"],
+#signupbox input[type="week"],
+#signupbox input[type="color"],
+#signupbox textarea,
+#signupbox select,
+#signupbox asp\:textbox {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#signupbox input[type="text"]:focus,
+#signupbox input[type="password"]:focus,
+#signupbox textarea:focus,
+#signupbox select:focus,
+#signupbox asp\:textbox:focus {
+    outline: none;
+    border-color: #0078d7;
+    box-shadow: 0 0 3px #0078d7;
+}
+
+#signupbox input[type="submit"],
+#signupbox input[type="button"],
+#signupbox button,
+#signupbox asp\:button {
+    background-color: #0078d7;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-bottom: 12px;
+}
+
+#signupbox input[type="submit"]:hover,
+#signupbox input[type="button"]:hover,
+#signupbox button:hover,
+#signupbox asp\:button:hover {
+    background-color: #005a9e;
+}
+
+#signupbox #lblError {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red;
+    min-height: 20px;
+    display: block;
+    text-align: center;
+}
+
+/* Special style for Go Back button - text link style */
+#btnGoback {
+    background: none !important;
+    border: none !important;
+    color: black !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    cursor: pointer;
+    width: auto !important;
+    display: block;
+    margin: 0 auto;
+    transition: color 0.3s ease;
+}
+
+#btnGoback:hover {
+    color: #0078d7 !important;
+}

@@ -1,0 +1,14 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES5",
+    "noImplicitAny": false,
+    "module": "esnext", 
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "lib": [ "DOM", "ES2015" ],
+    "skipLibCheck": true
+  },
+  "exclude": [ "node_modules", "wwwroot" ]
+}
+

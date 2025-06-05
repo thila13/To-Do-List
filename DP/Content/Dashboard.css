@@ -1,0 +1,75 @@
+﻿/* Navbar Container */
+#navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 12px 24px;
+    gap: 14px;
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    margin: 20px auto;
+    max-width: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style for the Dashboard title */
+#navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: auto; /* Push buttons to right */
+}
+
+/* Buttons inside Navbar - target ASP.NET rendered buttons */
+#navbar input[type="submit"],
+#navbar input[type="button"],
+#navbar button,
+#navbar .aspNetButton {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px; /* Rounded and playful */
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(52, 152, 219, 0.5);
+    user-select: none;
+}
+
+    /* Hover effect for buttons with bounce animation */
+    #navbar input[type="submit"]:hover,
+    #navbar input[type="button"]:hover,
+    #navbar button:hover,
+    #navbar .aspNetButton:hover {
+        background-color: #2980b9;
+        animation: bounce 0.3s ease forwards;
+        box-shadow: 0 6px 12px rgba(41, 128, 185, 0.7);
+    }
+
+    /* Pressed effect - scale down slightly */
+    #navbar input[type="submit"]:active,
+    #navbar input[type="button"]:active,
+    #navbar button:active,
+    #navbar .aspNetButton:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+
+    /* Add some spacing to the left of the first button */
+    #navbar input[type="submit"]:first-child {
+        margin-left: 0;
+    }
+
+/* Bounce keyframes animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
