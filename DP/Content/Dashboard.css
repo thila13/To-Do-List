@@ -1,4 +1,4 @@
-﻿/* Navbar Container */
+﻿/* ===== NAVBAR ===== */
 #navbar {
     display: flex;
     justify-content: flex-end;
@@ -6,22 +6,20 @@
     background-color: #2c3e50;
     padding: 12px 24px;
     gap: 14px;
-    border-radius: 16px; /* Rounded corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 90%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style for the Dashboard title */
 #navbar-title {
     color: white;
     font-size: 24px;
     font-weight: 700;
-    margin-right: auto; /* Push buttons to right */
+    margin-right: auto;
 }
 
-/* Buttons inside Navbar - target ASP.NET rendered buttons */
 #navbar input[type="submit"],
 #navbar input[type="button"],
 #navbar button,
@@ -30,7 +28,7 @@
     color: white;
     padding: 10px 18px;
     border: none;
-    border-radius: 25px; /* Rounded and playful */
+    border-radius: 25px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
@@ -39,31 +37,20 @@
     user-select: none;
 }
 
-    /* Hover effect for buttons with bounce animation */
     #navbar input[type="submit"]:hover,
     #navbar input[type="button"]:hover,
-    #navbar button:hover,
-    #navbar .aspNetButton:hover {
+    #navbar button:hover {
         background-color: #2980b9;
         animation: bounce 0.3s ease forwards;
         box-shadow: 0 6px 12px rgba(41, 128, 185, 0.7);
     }
 
-    /* Pressed effect - scale down slightly */
     #navbar input[type="submit"]:active,
     #navbar input[type="button"]:active,
-    #navbar button:active,
-    #navbar .aspNetButton:active {
+    #navbar button:active {
         transform: scale(0.95);
-        transition: transform 0.1s ease;
     }
 
-    /* Add some spacing to the left of the first button */
-    #navbar input[type="submit"]:first-child {
-        margin-left: 0;
-    }
-
-/* Bounce keyframes animation */
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
@@ -73,3 +60,120 @@
         transform: translateY(-5px);
     }
 }
+
+/* ===== MAIN TO-DO SECTION ===== */
+#todoSection {
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+    #todoSection h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+/* ===== INPUT ROW ===== */
+.task-input-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.task-input,
+.task-date-picker {
+    flex: 1 1 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ===== BUTTON STYLES ===== */
+.add-task-btn {
+    padding: 10px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    min-width: 100px;
+}
+
+    .add-task-btn:hover {
+        background-color: #218838;
+    }
+
+.clear-btn {
+    background-color: #e67e22;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .clear-btn:hover {
+        background-color: #d35400;
+    }
+
+.clear-button-container {
+    margin-top: 10px;
+}
+
+/* ===== TASK LIST STYLING ===== */
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7f7f7;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.task-text {
+    flex: 2;
+    font-size: 15px;
+    color: #2c3e50;
+    word-break: break-word;
+}
+
+.task-date {
+    flex: 1;
+    text-align: right;
+    font-size: 0.85em;
+    color: #888;
+    min-width: 90px;
+}
+
+/* Buttons (edit, delete, complete) */
+.todo-edit,
+.todo-delete,
+.todo-complete {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+}
+
+    .todo-edit:hover,
+    .todo-delete:hover,
+    .todo-complete:hover {
+        transform: scale(1.2);
+    }
