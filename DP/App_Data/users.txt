@@ -1,5 +1,2 @@
-﻿tr,13
-admin,0
-w,w
-ff,000
-trist,0b,b
+﻿admin,0
+bb,0

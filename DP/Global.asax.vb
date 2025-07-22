@@ -13,6 +13,7 @@ Public Class Global_asax
     End Sub
 
     Private Sub Global_asax_PostAuthenticateRequest(sender As Object, e As EventArgs) Handles Me.PostAuthenticateRequest
-        System.Web.HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required)
+        System.Web.HttpContext.Current.SetSessionStateBehavior(
+        SessionStateBehavior.Required)
     End Sub
 End Class

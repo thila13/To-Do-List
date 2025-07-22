@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports Newtonsoft.Json
 
 Public Class TaskItem
     Public Property Text As String
@@ -25,19 +26,20 @@ Partial Public Class Dashboard
     End Property
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        If Session("user") Is Nothing Then
-            Response.Redirect("Login.aspx")
-        End If
-
         If Not IsPostBack Then
-            If File.Exists(TasksFilePath) Then
-                Session("Tasks") = LoadTasksFromFile()
+            Dim username As String = TryCast(Session("Username"), String)
+
+            lblDebug.Text = "Logged in as: " & If(username, "(null)")
+
+            If username = "admin" Then
+                btnManageUsers.Style("display") = "inline-block"
             Else
-                Session("Tasks") = New List(Of TaskItem)()
+                btnManageUsers.Style("display") = "none"
             End If
-            BindTasks()
         End If
     End Sub
+
+
 
     Protected Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         SaveTasksToFile(CType(Session("Tasks"), List(Of TaskItem)))
@@ -64,7 +66,11 @@ Partial Public Class Dashboard
     End Sub
 
     Protected Sub btnAddTask_Click(sender As Object, e As EventArgs) Handles btnAddTask.Click
-        Dim tasks As List(Of TaskItem) = CType(Session("Tasks"), List(Of TaskItem))
+        Dim tasks As List(Of TaskItem) = TryCast(Session("Tasks"), List(Of TaskItem))
+        If tasks Is Nothing Then
+            tasks = New List(Of TaskItem)()
+        End If
+
         Dim newText As String = txtTask.Text.Trim()
         Dim dueDate As String = txtDueDate.Text.Trim()
 
@@ -77,10 +83,10 @@ Partial Public Class Dashboard
                 btnAddTask.Text = "Add Task"
             Else
                 tasks.Add(New TaskItem With {
-                    .Text = newText,
-                    .IsCompleted = False,
-                    .DueDate = dueDate
-                })
+                .Text = newText,
+                .IsCompleted = False,
+                .DueDate = dueDate
+            })
             End If
         End If
 
@@ -89,6 +95,7 @@ Partial Public Class Dashboard
         Session("Tasks") = tasks
         BindTasks()
     End Sub
+
 
     Protected Sub rptTasks_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles rptTasks.ItemCommand
         Dim tasks As List(Of TaskItem) = CType(Session("Tasks"), List(Of TaskItem))
@@ -120,20 +127,41 @@ Partial Public Class Dashboard
 
     Private Sub BindTasks()
         Dim tasks As List(Of TaskItem) = CType(Session("Tasks"), List(Of TaskItem))
-        rptTasks.DataSource = tasks.Select(Function(t) New With {
+        rptTasks.DataSource = tasks.Select(Function(t)
+                                               Dim cssClass As String = ""
+                                               Dim parsedDate As Date
+
+                                               ' Parse using ISO format (yyyy-MM-dd)
+                                               If Date.TryParseExact(t.DueDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, Globalization.DateTimeStyles.None, parsedDate) Then
+                                                   If parsedDate.Date < Date.Today Then
+                                                       cssClass = "overdue"
+                                                   ElseIf parsedDate.Date = Date.Today Then
+                                                       cssClass = "due-today"
+                                                   End If
+                                               End If
+
+                                               Return New With {
             .Text = If(t.IsCompleted, "✅ " & t.Text, t.Text),
-            .DueDate = t.DueDate
-        }).ToList()
+            .DueDate = t.DueDate,
+            .CssClass = cssClass
+        }
+                                           End Function).ToList()
+
         rptTasks.DataBind()
     End Sub
 
+
+
     Private Sub SaveTasksToFile(tasks As List(Of TaskItem))
+        If tasks Is Nothing Then Return ' ← Add this line to skip saving if tasks is null
+
         Using writer As New StreamWriter(TasksFilePath, False)
             For Each task In tasks
                 writer.WriteLine($"{task.Text}|{task.IsCompleted}|{task.DueDate}")
             Next
         End Using
     End Sub
+
 
     Private Function LoadTasksFromFile() As List(Of TaskItem)
         Dim tasks As New List(Of TaskItem)()

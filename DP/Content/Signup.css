@@ -1,144 +1,253 @@
-﻿/* Signup.css */
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* Playful rounded navbar */
-nav {
-    background-color: #0078d7;
-    padding: 12px 24px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 120, 215, 0.25);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px auto;
-    max-width: 90%;
-    color: white;
-    font-size: 18px;
-}
-
-/* Optional: Add link styles inside nav */
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 16px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #cce4ff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
+    font-family: 'Inter', sans-serif;
     height: 100vh;
+    background-image: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 24px;
+}
+
+.signupBox {
+    width: 135%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 48px 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+    .signupBox::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+    .header h1 {
+        font-size: 28px;
+        font-weight: 300;
+        color: #ffffff;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .header p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+    }
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+    .form-group:last-of-type {
+        margin-bottom: 32px;
+    }
+
+form {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items;
+    center;
+    margin-top: 20vh;
 }
 
-#signupbox {
-    background-color: white;
-    padding: 30px 40px;
-    border: 1px solid #ccc;
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    height: 52px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    width: 320px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 0 16px;
+    font-size: 15px;
+    color: #ffffff;
+    font-family: inherit;
+    transition: all 0.2s ease;
 }
 
-#signupbox label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        width: 100%;
+        height: 52px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 0 16px;
+        font-size: 15px;
+        color: #ffffff;
+        font-family: inherit;
+        transition: all 0.2s ease;
+    }
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
-#signupbox input[type="text"],
-#signupbox input[type="password"],
-#signupbox input[type="email"],
-#signupbox input[type="number"],
-#signupbox input[type="tel"],
-#signupbox input[type="url"],
-#signupbox input[type="search"],
-#signupbox input[type="date"],
-#signupbox input[type="datetime-local"],
-#signupbox input[type="month"],
-#signupbox input[type="time"],
-#signupbox input[type="week"],
-#signupbox input[type="color"],
-#signupbox textarea,
-#signupbox select,
-#signupbox asp\:textbox {
+input[type="submit"],
+input[type="button"],
+button {
     width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-#signupbox input[type="text"]:focus,
-#signupbox input[type="password"]:focus,
-#signupbox textarea:focus,
-#signupbox select:focus,
-#signupbox asp\:textbox:focus {
-    outline: none;
-    border-color: #0078d7;
-    box-shadow: 0 0 3px #0078d7;
-}
-
-#signupbox input[type="submit"],
-#signupbox input[type="button"],
-#signupbox button,
-#signupbox asp\:button {
-    background-color: #0078d7;
-    border: none;
-    color: white;
-    padding: 10px 16px;
-    font-size: 16px;
+    height: 52px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
-    border-radius: 4px;
-    width: 100%;
-    transition: background-color 0.3s ease;
-    margin-bottom: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 5px;
 }
 
-#signupbox input[type="submit"]:hover,
-#signupbox input[type="button"]:hover,
-#signupbox button:hover,
-#signupbox asp\:button:hover {
-    background-color: #005a9e;
+    input[type="submit"]:hover,
+    input[type="button"]:hover,
+    button:hover {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+        input[type="submit"]:hover::before,
+        input[type="button"]:hover::before,
+        button:hover::before {
+            opacity: 1;
+        }
+
+    input[type="submit"]:active,
+    input[type="button"]:active,
+    button:active {
+        transform: translateY(1px);
+    }
+
+    input[type="submit"]:before,
+    input[type="button"]:before,
+    button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 32px 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
 }
 
-#signupbox #lblError {
-    margin-top: 10px;
-    font-weight: bold;
-    color: red;
-    min-height: 20px;
+    .divider::before,
+    .divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .divider span {
+        padding: 0 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.signupBox {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .signupBox {
+        padding: 36px 28px;
+        margin: 16px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+}
+
+/* Premium details */
+.signupBox {
+    position: relative;
+}
+
+    .signupBox::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+        border-radius: 16px;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+input[type="submit"]:focus,
+input[type="button"]:focus,
+button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05), 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+p {
     display: block;
-    text-align: center;
-}
-
-/* Special style for Go Back button - text link style */
-#btnGoback {
-    background: none !important;
-    border: none !important;
-    color: black !important;
-    padding: 0 !important;
-    font-size: 14px !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-decoration: underline;
-    cursor: pointer;
-    width: auto !important;
-    display: block;
-    margin: 0 auto;
-    transition: color 0.3s ease;
-}
-
-#btnGoback:hover {
-    color: #0078d7 !important;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 20px;
+    text-transform Controls capitalization effects of an element's text. Learn more Don't show : uppercase;
+    letter-spacing: 0.5px;
 }

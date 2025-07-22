@@ -1,75 +1,52 @@
-﻿Imports System.IO
+﻿Imports System.Security.Cryptography
+Imports System.Text
+Imports DP.PerdoruesitDataSetTableAdapters
 
 Public Class Signup
     Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Session("user") Is Nothing Then
-            Response.Redirect("Login.aspx")
-        End If
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
     End Sub
 
-    Private Function UsernameExists(username As String, filePath As String) As Boolean
-        If Not File.Exists(filePath) Then Return False
-
-        Try
-            Dim lines As String() = File.ReadAllLines(filePath)
-            For Each line As String In lines
-                Dim parts() As String = line.Split(","c)
-                If parts.Length > 0 AndAlso parts(0).Equals(username, StringComparison.OrdinalIgnoreCase) Then
-                    Return True
-                End If
-            Next
-        Catch ex As Exception
-            ' Optionally log the error or handle it
-            ' For now, just return False so signup can proceed
-            Return False
-        End Try
-
-        Return False
+    ' Hash password  SHA-256
+    Private Function HashPassword(input As String) As String
+        Using sha As SHA256 = SHA256.Create()
+            Dim bytes = Encoding.UTF8.GetBytes(input)
+            Dim hash = sha.ComputeHash(bytes)
+            Return BitConverter.ToString(hash).Replace("-", "").ToLower()
+        End Using
     End Function
 
     Private Sub ShowMessage(message As String, isError As Boolean)
         lblError.Text = message
-        If isError Then
-            lblError.ForeColor = System.Drawing.Color.Red
-        Else
-            lblError.ForeColor = System.Drawing.Color.Green
-        End If
+        lblError.ForeColor = If(isError, Drawing.Color.Red, Drawing.Color.Green)
     End Sub
 
     Protected Sub btnSignup_Click(sender As Object, e As EventArgs) Handles btnSignup.Click
         Dim username As String = txtUsername.Text.Trim()
         Dim password As String = txtPassword.Text.Trim()
-        Dim filePath As String = Server.MapPath("~/App_Data/users.txt")
 
-        If username = "" OrElse password = "" Then
+        If String.IsNullOrWhiteSpace(username) OrElse String.IsNullOrWhiteSpace(password) Then
             ShowMessage("Please fill in both fields.", True)
             Return
         End If
 
-        If UsernameExists(username, filePath) Then
-            ShowMessage("Username taken.", True)
-            Return
-        End If
+        Dim hashedPassword As String = HashPassword(password)
 
         Try
-            Using writer As New StreamWriter(filePath, True)
-                writer.WriteLine(username & "," & password)
-            End Using
+            Dim adapter As New MerrPerrdoruesitTableAdapter()
+            adapter.sp_KrijoPerdorues(username, hashedPassword)
+
+            Session("user") = username
+            ShowMessage("E krijove ene nji, je bo si lepurat!", False)
+            Response.Redirect("Login.aspx")
+
         Catch ex As Exception
-            ShowMessage("Error saving user. Try again later.", True)
-            Return
+            ShowMessage("Error creating user. Maybe username already exists?", True)
         End Try
-
-        ShowMessage("E krijove ene nji je bo si lepurat!", False)
-
-        Session("user") = username
-        Response.Redirect("Dashboard.aspx")
     End Sub
 
     Protected Sub btnGoback_Click(sender As Object, e As EventArgs) Handles btnGoback.Click
-        Response.Redirect("Dashboard.aspx")
+        Response.Redirect("Login.aspx")
     End Sub
-
 End Class

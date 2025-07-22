@@ -1,17 +1,163 @@
 ﻿/* ===== NAVBAR ===== */
-#navbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #2c3e50;
-    padding: 12px 24px;
-    gap: 14px;
-    border-radius: 16px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 90%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #ffffff;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+    .btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+    }
+
+navbar-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.main-content {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: -0.02em;
+}
+
+.task-form {
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: stretch;
+}
+
+.task-input {
+    flex: 1;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+    .task-input:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .task-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+.btn-add {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+    .btn-add:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+.date-input {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    width: 180px;
+}
+
+    .date-input:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+.btn-clear {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+    .btn-clear:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.95);
+    }
 
 #navbar-title {
     color: white;
@@ -87,68 +233,43 @@
     justify-content: center;
 }
 
-.task-input,
-.task-date-picker {
-    flex: 1 1 140px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-}
+
 
 /* ===== BUTTON STYLES ===== */
-.add-task-btn {
-    padding: 10px 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    min-width: 100px;
-}
 
-    .add-task-btn:hover {
-        background-color: #218838;
-    }
 
-.clear-btn {
-    background-color: #e67e22;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-    .clear-btn:hover {
-        background-color: #d35400;
-    }
-
-.clear-button-container {
-    margin-top: 10px;
-}
 
 /* ===== TASK LIST STYLING ===== */
-.todo-item {
+.task-list {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background: #f7f7f7;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 10px;
-    flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    transition: all 0.2s ease;
 }
+
+    /* Highlight overdue tasks */
+    .task-list.overdue {
+        background: rgba(255, 255, 255, 0.04);
+        color: #c0392b;
+        border: 1px solid #c0392b;
+    }
+
+    /* Highlight tasks due today */
+    .task-list.due-today {
+        background: rgba(255, 255, 255, 0.04);
+        color: #2980b9;
+        border: 1px solid #2980b9;
+    }
 
 .task-text {
     flex: 2;
     font-size: 15px;
-    color: #2c3e50;
+    color: inherit; /* inherit color from parent for red/blue effect */
     word-break: break-word;
 }
 
@@ -156,9 +277,10 @@
     flex: 1;
     text-align: right;
     font-size: 0.85em;
-    color: #888;
+    color: inherit; /* inherit from .todo-item */
     min-width: 90px;
 }
+
 
 /* Buttons (edit, delete, complete) */
 .todo-edit,
@@ -177,3 +299,107 @@
     .todo-complete:hover {
         transform: scale(1.2);
     }
+
+.notification-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+#taskNotifications {
+    margin-bottom: 20px;
+    text-align: left;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ 
+.notification {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+    .notification.due-today {
+        background-color: #007BFF; /* Blue */
+    }
+
+    .notification.overdue {
+        background-color: #DC3545; /* Red */
+    }
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    animation: fadeInOverlay 0.3s ease-out;
+}
+
+.popup-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    color: #1a1a2e;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+    position: relative;
+}
+
+.popup-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(26, 26, 46, 0.1);
+}
+
+    .popup-content {
+        background: white;
+        width: 400px;
+        padding: 20px;
+        margin: 100px auto;
+        border-radius: 10px;
+        position: relative;
+        text-align: center;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+lbl-error{
+
+}
